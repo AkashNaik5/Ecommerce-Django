@@ -1,0 +1,38 @@
+{% extends 'blog/basic.html' %}
+{% block title%} {{product.product_name}} - My Awesome Cart{% endblock %}
+
+{% block body %}
+
+  {% load static %}
+<div style="background-image:url(/static/blog/test3.jpg); background-repeat: no-repeat;  background-size: 100% 100%;">
+<div class="container">
+
+<div class="row ">
+
+  {% for item in blogs %}
+    <div class="col-md-6 col-xs-6 col-xl-6 mb-2 mt-4">
+
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="background-color:white; ">
+
+        <div class="col p-4 d-flex flex-column position-static" ">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">{{item.blog_title|slice:"0:15"}}....</h3>
+          <div class="mb-1 text-muted">{{item.timestamp}}</div>
+          <p class="card-text mb-auto">{{item.blog_desc|slice:"0:63"}}....</p>
+          <a href="/blog/blogpost/{{item.post_id}}" class="stretched-link">Continue reading</a>
+        </div>
+        <div align="center" class="col-auto d-none d-lg-block "  >
+          <img src="/media/{{item.image}}" class="bd-placeholder-img" align="center"  width="200" height="220" aria-label="Placeholder: thumbnail"/>
+        </div>
+      </div>
+
+    </div>
+  {% if forloop.counter|divisibleby:2 and forloop.counter > 0 %}
+</div><div class="row mb-2 mt-4">
+  {% endif %}
+
+  {% endfor %}
+    </div>
+</div>
+  </div>
+{% endblock %}

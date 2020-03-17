@@ -1,0 +1,38 @@
+{% extends 'shop/basic.html' %}
+
+{% block title%} Product - this is the tracking page{% endblock %}
+
+{% block css %}
+<style>
+
+
+.body {
+
+}
+    </style>
+
+ {% endblock %}
+
+{% block body %}
+{% load static %}
+  <body class="text-center" style="color:white;">
+  <div  style="background-image:url(/static/shop/test.png); background-repeat: no-repeat;  background-size: 100% 100%;">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+  <main role="main" class="inner cover">
+    <h1 class="cover-heading">Thank you for ordering with us.</h1>
+    <p class="lead">Your order id is {{order_detail.order_id}}. Use it to track your order using our order tracker.</p>
+    <p class="lead">
+        <button class="btn btn-primary" type="submit" onclick="window.location.href = '/shop/';" style="background-color:white;color:green;">Back To Home</button>
+        <button class="btn btn-primary" type="submit" onclick="window.location.href = '/shop/tracker/';" style="background-color:white;color:green;">Go To Tracker</button>
+
+    </p>
+  </main>
+  </div>
+  </div>
+  </body>
+
+<!--<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>-->
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'shop/basic.html' %}
+{% block title%} My Awesome Cart Tracker{% endblock %}
+{% block body %}
+<div  style="background-image:url(/static/shop/test.png); background-repeat: no-repeat;  background-size: 100% 100%;color:white;">
+<div class="container text-center" >
+    <div>
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+  <main role="main" class="inner cover">
+
+
+        <h2 class="cover-heading">Payment status regarding your order Id {{response.ORDERID}}</h2>
+        {% if response.RESPCODE == '01' %}
+            <h1 class="cover-heading">Your items ordered successfully.</h1>
+            <h3>Your Transaction ID  :  {{response.TXNID}}</h3>
+            <h3>Transaction Amount   : {{response.CURRENCY}} {{response.TXNAMOUNT}}</h3>
+            <h3>Transaction Date     :  {{response.TXNDATE}}</h3>
+
+        <h1 class="cover-heading mt-4">Thank you for ordering with us.</h1>
+    <p class="lead">Your order id is {{response.ORDERID}}. Use it to track your order using our order tracker.</p>
+      <p class="lead">
+
+        <button class="btn btn-primary" type="submit" onclick="window.location.href = '/shop/tracker/';" style="background-color:white;color:green;">Go To Tracker</button>
+
+        {% else %}
+            <p class="lead">
+
+            <h1 class="cover-heading">Transaction Failed. Try Again.... .</h1>
+        {% endif%}
+
+        <button class="btn btn-primary" type="submit" onclick="window.location.href = '/shop/';" style="background-color:white;color:green;">Back To Home</button>
+
+    </p>
+
+  </main>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+
+    {% if thank %}
+    localStorage.clear();
+    {% endif %}
+</script>
+{% endblock %}
